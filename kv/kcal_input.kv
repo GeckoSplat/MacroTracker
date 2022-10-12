@@ -1,0 +1,25 @@
+
+<"kcal_input">
+  
+
+    title: 'InputDialog'
+    auto_dismiss: False
+    id: test1
+  
+    
+    RelativeLayout:
+        orientation: 'vertical'
+        pos: self.pos
+        size: root.size
+        id: test2
+  
+        # Defining text input in .kv
+        # And giving it the look . pos and features
+        TextInput:
+            id: input Kcals
+            hint_text:'Enter Kcals'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.705}
+            size_hint: 0.5, 0.25
+            on_text: app.process()
+            
+        
