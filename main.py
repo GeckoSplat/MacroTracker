@@ -8,11 +8,15 @@ kivy.require('2.1.0')
 from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput 
 from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.button import ButtonBehavior 
   
 # Create the widget class
 class textinp(Widget):
-
     pass
+# Create button Class 
+class buttons(ButtonBehavior):
+    pass      
+
   
 class MainApp(App):
     
@@ -20,7 +24,7 @@ class MainApp(App):
     def build(self):
 
         return textinp()
-    
+    # prints to test. should retain input until ADD/SUB/CLEAR
     def process(self):
         text1 = self.root.ids.input1.text
         print(text1)
@@ -30,11 +34,14 @@ class MainApp(App):
         print(text3)
         text4 = self.root.ids.input4.text
         print(text4)
-        
-        #print(text1,text2,text3,text4)  # this works !!
 
-
-  
+    def plusbutton(self): 
+        print('button pressed')      
 
 if __name__ == "__main__":
     MainApp().run()
+    
+
+    # To do .
+    # add SUB and CLEAR buttons , make them work. Get sizing 
+    # and placement right 
