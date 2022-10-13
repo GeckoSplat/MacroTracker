@@ -1,46 +1,40 @@
+
+# Program to Show how to use textinput 
 # (UX widget) in kivy using .kv file
-  
-# import kivy module    
+
 import kivy  
-       
-# base Class of your App inherits from the App class.    
-# app:always refers to the instance of your application   
 from kivy.app import App 
-     
-# this restrict the kivy version i.e  
-# below this kivy version you cannot  
-# use the app or software  
-#kivy.require('2.1.0')
-  
-# Widgets are elements
-# of a graphical user interface
-# that form part of the User Experience.
+kivy.require('2.1.0')
 from kivy.uix.widget import Widget
-  
-# The TextInput widget provides a
-# box for editable plain text
-from kivy.uix.textinput import TextInput
-  
-# This layout allows you to set relative coordinates for children. 
+from kivy.uix.textinput import TextInput 
 from kivy.uix.relativelayout import RelativeLayout
   
 # Create the widget class
 class textinp(Widget):
+
     pass
   
-# Create the app class
 class MainApp(App):
-  
-    # Building text input
+    
+    
     def build(self):
+
         return textinp()
-  
-    # Arranging that what you write will be shown to you
-    # in IDLE
+    
     def process(self):
-        text = self.root.ids.input.text
-        print(text)
+        text1 = self.root.ids.input1.text
+        print(text1)
+        text2 = self.root.ids.input2.text
+        print(text2) 
+        text3 = self.root.ids.input3.text
+        print(text3)
+        text4 = self.root.ids.input4.text
+        print(text4)
+        
+        #print(text1,text2,text3,text4)  # this works !!
+
+
   
-# Run the App
+
 if __name__ == "__main__":
-    MainApp().run()    
+    MainApp().run()
