@@ -12,6 +12,7 @@ from kivy.uix.button import ButtonBehavior
   
 # Create the widget class
 class textinp(Widget):
+    TextInput.multiline = False
     pass
 # Create button Class 
 class buttons(ButtonBehavior):
@@ -36,12 +37,17 @@ class MainApp(App):
         print(text4)
 
     def plusbutton(self): 
-        print('button pressed')      
+        print('ADD button pressed')      
+
+    def subbutton(self):
+        print ('SUB button pressed')
+
+    def totalsbutton (self):
+        print ('TOTALS button pressed')    
 
 if __name__ == "__main__":
     MainApp().run()
     
 
     # To do .
-    # add SUB and CLEAR buttons , make them work. Get sizing 
-    # and placement right 
+    # sqlite . input from text boxes to database. make ADD + SUB do this 

@@ -49,10 +49,27 @@
             Button:
                 id: plusbutton
                 text:"ADD"
-                background_color: 0, 0, 100, 1
+                background_color: 50, 0, 100, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.6, "top":0.85}
+                pos_hint: {"x":0.6, "top":0.45}
                 on_release : app.plusbutton()  
+
+            Button:
+                id: subbutton
+                text:"SUB"
+                background_color: 0, 50, 100, 0.5
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.8, "top":0.45}
+                on_release : app.subbutton()                  
+
+            Button:
+                id: totalsbutton
+                text:"TOT"
+                background_color: 50, 50, 100, 0.5
+                size_hint: 0.3, 0.1
+                pos_hint: {"x":0.6, "top":0.25}
+                on_release : app.totalsbutton()                  
+
 
         
         
