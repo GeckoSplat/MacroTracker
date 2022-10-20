@@ -7,6 +7,8 @@ from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput 
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.button import ButtonBehavior 
+from kivy.uix.label import Label
+from kivy.uix.floatlayout import FloatLayout
 import sqlite3 as sql
 
 
@@ -18,9 +20,10 @@ class textinp(Widget):
 
 # Create button Class 
 class buttons(ButtonBehavior):
-    pass      
+    pass    
 
-  
+
+# Main  
 class MainApp(App):
     
     
@@ -84,7 +87,13 @@ class MainApp(App):
         cur = con.cursor()   
         cur.execute('SELECT SUM (Kcals) FROM Kcal;')
         Total = cur.fetchall()
-        print (Total)
+        for number in Total:                    # This loop works
+            output = f"{number[0]} {'Kcals'}"
+            self.root.ids.outputKcals.text = f'{output}'
+
+
+        print(Total)
+
 
 
 
@@ -98,8 +107,8 @@ if __name__ == "__main__":
 
 
 
-# Have total call it back AND ADD IT TOGETHER FROM DB, Button for each total 
-# MAKE input float only
-# Clear text field when button pressed and manipulate total to output box ( fstring for 'Your calories/ grammes)
+# Have total call it back AND ADD IT TOGETHER FROM DB, last 3 buttons TO DO
+# Clear text field when button pressed
+# compile after making pretty
 
 

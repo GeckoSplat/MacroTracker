@@ -18,34 +18,38 @@
         
         TextInput:
             id: input1
-
+            input_filter: 'float'
             hint_text:'Enter Protein in Grammes'
             pos_hint: {'center_x': 0.28, 'center_y': 0.205}
-            size_hint: 0.40, 0.1
+            size_hint: 0.30, 0.1
             on_text: app.process()
 
         TextInput:
             id: input2    
+            input_filter: 'float'
             hint_text:'Enter Carbs in Grammes'
             pos_hint: {'center_x': 0.28, 'center_y': 0.405}
-            size_hint: 0.40, 0.1
+            size_hint: 0.30, 0.1
             on_text: app.process()
 
         TextInput:
-            id: input3    
+            id: input3
+            input_filter: 'float'    
             hint_text:'Enter Fats in Grammes'
             pos_hint: {'center_x': 0.28, 'center_y': 0.605}
-            size_hint: 0.40, 0.1
+            size_hint: 0.30, 0.1
             on_text: app.process()
 
         TextInput:
-            id: input4    
+            id: input4
+            input_filter: 'float'    
             hint_text:'Enter Kcals'
             pos_hint: {'center_x': 0.28, 'center_y': 0.800}
-            size_hint: 0.40, 0.1
+            size_hint: 0.30, 0.1
             on_text: app.process()
 
-        
+
+
         FloatLayout:     
             Button:
                 id: plusbutton
@@ -65,12 +69,12 @@
                 on_release : app.remove_last_data()                
 
             Button:
-                id: totalsbutton
-                text:"TOT"
+                id: Kcalstotalsbutton
+                text:"TOTKc"
                 background_color: 50, 70, 25, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.85, "top":0.25}
-                on_release : app.totalsbuttonKcal()                  
+                pos_hint: {"x":0.85, "top":0.85}
+                on_release : app.totalsbuttonKcal()              
 
             Button:
                 id: clearbutton
@@ -80,5 +84,37 @@
                 pos_hint: {"x":0.665, "top":0.15}
                 on_release : app.clear_data()
 
-        
+            Button:
+                id: totalsbutton
+                text:"TOTcb"
+                background_color: 50, 70, 25, 0.5
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.85, "top":0.45}
+                on_release :                   
+
+            Button:
+                id: totalsbutton
+                text:"TOTf"
+                background_color: 50, 70, 25, 0.5
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.85, "top":0.65}
+                on_release :                   
+
+            Button:
+                id: totalsbutton
+                text:"TOTp"
+                background_color: 50, 70, 25, 0.5
+                size_hint: 0.1, 0.1
+                pos_hint: {"x":0.85, "top":0.25}
+                on_release :                   
+
+            Label:
+                id: outputKcals    
+                size: 0.5,0.5
+                pos_hint: {"x":0.1, "y":0.31}  # pos different from button layout
+                text: 'TOT Kcals'
+                background_color: 50,50,50,50
+
+
+
         
