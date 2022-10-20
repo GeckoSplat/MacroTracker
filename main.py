@@ -42,8 +42,12 @@ class MainApp(App):
     def subbutton(self):
         print ('SUB button pressed')
 
-    def totalsbutton (self):
+    def totalsbutton(self):
         print ('TOTALS button pressed')    
+
+    def clearbutton(self):
+        print ('CLEAR button pressed')
+
 
 if __name__ == "__main__":
     MainApp().run()
