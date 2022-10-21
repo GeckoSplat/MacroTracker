@@ -19,7 +19,6 @@ class textinp(Widget):
     pass 
 
 # Create button Class 
-class buttons(ButtonBehavior):
     pass    
 
 
@@ -29,10 +28,10 @@ class MainApp(App):
     
     def build(self):
 
-        def database(self):
+        def database(self): # commented out lines as only needed to first create DB
             con = sql.connect('macrosdb')
             cur = con.cursor()
-           # cur.execute(""" CREATE TABLE Kcal(
+           # cur.execute(""" CREATE TABLE Kcal(                       
            # Kcals , Fats , Carbs , Proteins )    
            # """)        
             con.commit()
@@ -41,8 +40,18 @@ class MainApp(App):
         database(self)       
         return textinp()
 
-    
-    def add_data(self):
+    def process(self):  # Defined global variable
+        global text1,text2,text3,text4    
+        text1 = self.root.ids.input1.text
+        text2 = self.root.ids.input2.text 
+        text3 = self.root.ids.input3.text
+        text4 = self.root.ids.input4.text
+
+    def add_data(self): # Defined variables again here as kept erroring without this , unsure why.
+        text1 = self.root.ids.input1.text
+        text2 = self.root.ids.input2.text 
+        text3 = self.root.ids.input3.text
+        text4 = self.root.ids.input4.text
         con = sql.connect('macrosdb')
         cur = con.cursor()
         cur.execute("""INSERT INTO Kcal (Kcals,Fats,Carbs,Proteins) VALUES (?,?,?,?)""",
@@ -52,8 +61,7 @@ class MainApp(App):
         db_check = cur.fetchall()
         print(db_check)
         con.close()
-        print(' DB DONE')    
-
+  
     def remove_last_data(self):
         con = sql.connect('macrosdb')
         cur = con.cursor()
@@ -69,17 +77,13 @@ class MainApp(App):
         con.commit()
         con.close()
         print(' ALL DATA DELETED')
-      
-    def process(self):
-        global text1,text2,text3,text4    
-        text1 = self.root.ids.input1.text
-        print(text1)
-        text2 = self.root.ids.input2.text
-        print(text2) 
-        text3 = self.root.ids.input3.text
-        print(text3)
-        text4 = self.root.ids.input4.text
-        print(text4)
+
+    def clear_text_boxes(self):
+        self.root.ids.input1.text = ''
+        self.root.ids.input2.text = ''
+        self.root.ids.input3.text = ''
+        self.root.ids.input4.text = ''         
+
 
 
     def totalsbuttonKcal(self):
@@ -90,16 +94,39 @@ class MainApp(App):
         for number in Total:                    # This loop works
             output = f"{number[0]} {'Kcals'}"
             self.root.ids.outputKcals.text = f'{output}'
-
-
         print(Total)
 
-
-
-
+    def TOTcbButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Carbs) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    # This loop works
+            output = f"{number[0]} {'Carbs'}"
+            self.root.ids.TOTcbButton.text = f'{output}'
+        print(Total)
     
+    def TOTfButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Fats) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    # This loop works
+            output = f"{number[0]} {'Fats'}"
+            self.root.ids.TOTfButton.text = f'{output}'
+        print(Total)
 
-         
+    def TOTpButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Proteins) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    # This loop works
+            output = f"{number[0]} {'Protein'}"
+            self.root.ids.TOTpButton.text = f'{output}'
+        print(Total)      
+
+
 if __name__ == "__main__":
     MainApp().run()
     
@@ -107,8 +134,9 @@ if __name__ == "__main__":
 
 
 
-# Have total call it back AND ADD IT TOGETHER FROM DB, last 3 buttons TO DO
-# Clear text field when button pressed
-# compile after making pretty
+
+
+# TO DO - MAKE PRETTY 
+# Compile to apk 
 
 
