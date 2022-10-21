@@ -16,9 +16,12 @@ import sqlite3 as sql
  #Create the widget class
 class textinp(Widget):
     TextInput.multiline = False
+    
     pass 
 
-# Create button Class 
+# Create button Class
+class buttons(ButtonBehavior):
+
     pass    
 
 
@@ -47,7 +50,7 @@ class MainApp(App):
         text3 = self.root.ids.input3.text
         text4 = self.root.ids.input4.text
 
-    def add_data(self): # Defined variables again here as kept erroring without this , unsure why.
+    def add_data(self): # Defined text variables again here as kept erroring without this , unsure why.
         text1 = self.root.ids.input1.text
         text2 = self.root.ids.input2.text 
         text3 = self.root.ids.input3.text
@@ -62,10 +65,10 @@ class MainApp(App):
         print(db_check)
         con.close()
   
-    def remove_last_data(self):
+    def remove_last_data(self):# rowid important here
         con = sql.connect('macrosdb')
         cur = con.cursor()
-        cur.execute("""DELETE FROM Kcal WHERE rowid = (SELECT MAX(rowid) FROM Kcal);""") # rowid important here
+        cur.execute("""DELETE FROM Kcal WHERE rowid = (SELECT MAX(rowid) FROM Kcal);""") 
         con.commit()
         con.close()
         print(' DB ROW DELETED')
@@ -84,14 +87,12 @@ class MainApp(App):
         self.root.ids.input3.text = ''
         self.root.ids.input4.text = ''         
 
-
-
     def totalsbuttonKcal(self):
         con = sql.connect('macrosdb')
         cur = con.cursor()   
         cur.execute('SELECT SUM (Kcals) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    # This loop works
+        for number in Total:                    
             output = f"{number[0]} {'Kcals'}"
             self.root.ids.outputKcals.text = f'{output}'
         print(Total)
@@ -101,7 +102,7 @@ class MainApp(App):
         cur = con.cursor()   
         cur.execute('SELECT SUM (Carbs) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    # This loop works
+        for number in Total:                    
             output = f"{number[0]} {'Carbs'}"
             self.root.ids.TOTcbButton.text = f'{output}'
         print(Total)
@@ -111,7 +112,7 @@ class MainApp(App):
         cur = con.cursor()   
         cur.execute('SELECT SUM (Fats) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    # This loop works
+        for number in Total:                    
             output = f"{number[0]} {'Fats'}"
             self.root.ids.TOTfButton.text = f'{output}'
         print(Total)
@@ -121,7 +122,7 @@ class MainApp(App):
         cur = con.cursor()   
         cur.execute('SELECT SUM (Proteins) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    # This loop works
+        for number in Total:                   
             output = f"{number[0]} {'Protein'}"
             self.root.ids.TOTpButton.text = f'{output}'
         print(Total)      
@@ -136,7 +137,7 @@ if __name__ == "__main__":
 
 
 
-# TO DO - MAKE PRETTY 
+# TO DO - MAKE TITLE 
 # Compile to apk 
 
 

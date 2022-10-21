@@ -53,24 +53,30 @@
             Button:
                 id: plusbutton
                 text:"ADD"
-                background_color: 50, 1, 100, 0.5
-                size_hint: 0.3, 0.1
-                pos_hint: {"x":0.065, "top":0.15}
+                markup: True
+                bold : True
+                background_color: 1, 10, 100, 0.7
+                size_hint: 0.25, 0.1
+                pos_hint: {"x":0.645, "top":0.15}
                 on_release : app.add_data(), app.clear_text_boxes()
 
 
             Button:
                 id: subbutton
                 text:"SUB"
-                background_color: 0, 1, 100, 0.5
-                size_hint: 0.3, 0.1
+                markup: True
+                bold : True
+                background_color: 1, 10, 100, 0.3          
+                size_hint: 0.25, 0.1
                 pos_hint: {"x":0.365, "top":0.15}
                 on_release : app.remove_last_data(), app.clear_text_boxes()                
 
             Button:
                 id: Kcalstotalsbutton
                 text:"="
-                background_color: 50, 70, 25, 0.5
+                markup: True
+                bold : True                
+                background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
                 pos_hint: {"x":0.80, "top":0.85}
                 on_release : app.totalsbuttonKcal(), app.clear_text_boxes()              
@@ -78,15 +84,19 @@
             Button:
                 id: clearbutton
                 text:"CLEAR"
-                background_color: 100, 1, 100, 0.5
-                size_hint: 0.3, 0.1
-                pos_hint: {"x":0.665, "top":0.15}
+                markup: True
+                bold : True
+                background_color: 0, 0, 100, 0.5
+                size_hint: 0.25, 0.1
+                pos_hint: {"x":0.085, "top":0.15}
                 on_release : app.clear_data(), app.clear_text_boxes()
 
             Button:
                 id: TOTcbButton
                 text:"="
-                background_color: 50, 70, 25, 0.5
+                markup: True
+                bold : True                
+                background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
                 pos_hint: {"x":0.80, "top":0.45}
                 on_release : app.TOTcbButton(), app.clear_text_boxes()                 
@@ -94,7 +104,9 @@
             Button:
                 id: TOTfButton
                 text:"="
-                background_color: 50, 70, 25, 0.5
+                markup: True
+                bold : True                
+                background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
                 pos_hint: {"x":0.80, "top":0.65}
                 on_release : app.TOTfButton(), app.clear_text_boxes()                  
@@ -102,7 +114,9 @@
             Button:
                 id: TOTpButton
                 text:"="
-                background_color: 50, 70, 25, 0.5
+                markup: True
+                bold : True                
+                background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
                 pos_hint: {"x":0.80, "top":0.25}
                 on_release :app.TOTpButton(), app.clear_text_boxes()                   
@@ -111,6 +125,8 @@
             Label:
                 id: outputKcals    
                 size: 0.5,0.5
+                markup: True
+                bold : True
                 pos_hint: {"x":0.1, "y":0.31}  # pos different from button layout
                 text: 'TOT Kcals'
                 background_color: 50,50,50,50
@@ -118,6 +134,8 @@
             Label:
                 id: TOTcbButton   
                 size: 0.5,0.5
+                markup: True
+                bold : True
                 pos_hint: {"x":0.1, "y":-0.1}  # pos different from button layout
                 text: 'TOT Carbs'
                 background_color: 50,50,50,50                
@@ -125,6 +143,8 @@
             Label:
                 id: TOTfButton 
                 size: 0.5,0.5
+                markup: True
+                bold : True                
                 pos_hint: {"x":0.1, "y":0.1}  # pos different from button layout
                 text: 'TOT Fats'
                 background_color: 50,50,50,50  
@@ -132,6 +152,11 @@
             Label:
                 id: TOTpButton 
                 size: 0.5,0.5
+                markup: True
+                bold : True                
                 pos_hint: {"x":0.1, "y":-0.3}  # pos different from button layout
                 text: 'TOT Pr'
                 background_color: 50,50,50,50  
+
+
+
