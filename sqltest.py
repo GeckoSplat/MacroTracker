@@ -137,7 +137,7 @@ if __name__ == "__main__":
 
 
 
-# TO DO - MAKE TITLE 
+
 # Compile to apk 
 
 

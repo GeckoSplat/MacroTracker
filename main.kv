@@ -12,8 +12,25 @@
         pos: self.pos
         size: root.size
         id: test2
-  
-        
+
+
+        Label:
+            id: title
+            size: 1.5,0.5
+            font_size: 25
+            markup: True
+            bold : True     
+            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+            text: 'MacroTracker'
+            background_color:(0,0,1,1)
+            canvas.before:
+                Color:
+                    rgba:self.background_color
+            color:(0,0.3,1,1) 
+            outline_color:(1,1,1,1)
+            outline_width:2
+
+             
         TextInput:
             id: input1
             input_filter: 'float'
@@ -155,7 +172,7 @@
                 markup: True
                 bold : True                
                 pos_hint: {"x":0.1, "y":-0.3}  # pos different from button layout
-                text: 'TOT Pr'
+                text: 'TOT Protein'
                 background_color: 50,50,50,50  
 
 

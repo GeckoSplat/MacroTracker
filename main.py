@@ -53,5 +53,3 @@ if __name__ == "__main__":
     MainApp().run()
     
 
-    # To do .
-    # sqlite . input from text boxes to database. make ADD + SUB do this 
