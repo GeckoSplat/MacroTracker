@@ -1,7 +1,4 @@
 
-# Program to Show how to use textinput 
-# (UX widget) in kivy using .kv file
-
 import kivy  
 from kivy.app import App 
 kivy.require('2.1.0')
@@ -9,47 +6,124 @@ from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput 
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.button import ButtonBehavior 
-  
-# Create the widget class
+from kivy.uix.label import Label
+from kivy.uix.floatlayout import FloatLayout
+import sqlite3 as sql
+
+
+
+ #Create the widget class
 class textinp(Widget):
     TextInput.multiline = False
-    pass
-# Create button Class 
-class buttons(ButtonBehavior):
-    pass      
+    
+    pass 
 
+# Create button Class
+class buttons(ButtonBehavior):
+
+    pass    
   
 class MainApp(App):
     
     
     def build(self):
 
+        def database(self): # commented out lines as only needed to first create DB
+            con = sql.connect('macrosdb')
+            cur = con.cursor()
+           # cur.execute(""" CREATE TABLE Kcal(                       
+           # Kcals , Fats , Carbs , Proteins )    
+           # """)        
+            con.commit()
+            con.close()
+            print(' DB DONE' )
+        database(self)       
         return textinp()
-    # prints to test. should retain input until ADD/SUB/CLEAR
-    def process(self):
+
+    def process(self):  # Defined global variable
+        global text1,text2,text3,text4    
         text1 = self.root.ids.input1.text
-        print(text1)
-        text2 = self.root.ids.input2.text
-        print(text2) 
+        text2 = self.root.ids.input2.text 
         text3 = self.root.ids.input3.text
-        print(text3)
         text4 = self.root.ids.input4.text
-        print(text4)
 
-    def plusbutton(self): 
-        print('ADD button pressed')      
+    def add_data(self): # Defined text variables again here as kept erroring without this , unsure why.
+        text1 = self.root.ids.input1.text
+        text2 = self.root.ids.input2.text 
+        text3 = self.root.ids.input3.text
+        text4 = self.root.ids.input4.text
+        con = sql.connect('macrosdb')
+        cur = con.cursor()
+        cur.execute("""INSERT INTO Kcal (Kcals,Fats,Carbs,Proteins) VALUES (?,?,?,?)""",
+        (text4,text3,text2,text1))
+        con.commit()
+        cur.execute('select * from Kcal')
+        db_check = cur.fetchall()
+        print(db_check)
+        con.close()
+  
+    def remove_last_data(self):# rowid important here
+        con = sql.connect('macrosdb')
+        cur = con.cursor()
+        cur.execute("""DELETE FROM Kcal WHERE rowid = (SELECT MAX(rowid) FROM Kcal);""") 
+        con.commit()
+        con.close()
+        print(' DB ROW DELETED')
 
-    def subbutton(self):
-        print ('SUB button pressed')
+    def clear_data(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute("""DELETE FROM Kcal;""")
+        con.commit()
+        con.close()
+        print(' ALL DATA DELETED')
 
-    def totalsbutton(self):
-        print ('TOTALS button pressed')    
+    def clear_text_boxes(self):
+        self.root.ids.input1.text = ''
+        self.root.ids.input2.text = ''
+        self.root.ids.input3.text = ''
+        self.root.ids.input4.text = ''         
 
-    def clearbutton(self):
-        print ('CLEAR button pressed')
+    def totalsbuttonKcal(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Kcals) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    
+            output = f"{number[0]} {'Kcals'}"
+            self.root.ids.outputKcals.text = f'{output}'
+        print(Total)
+
+    def TOTcbButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Carbs) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    
+            output = f"{number[0]} {'Carbs'}"
+            self.root.ids.TOTcbButton.text = f'{output}'
+        print(Total)
+    
+    def TOTfButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Fats) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                    
+            output = f"{number[0]} {'Fats'}"
+            self.root.ids.TOTfButton.text = f'{output}'
+        print(Total)
+
+    def TOTpButton(self):
+        con = sql.connect('macrosdb')
+        cur = con.cursor()   
+        cur.execute('SELECT SUM (Proteins) FROM Kcal;')
+        Total = cur.fetchall()
+        for number in Total:                   
+            output = f"{number[0]} {'Protein'}"
+            self.root.ids.TOTpButton.text = f'{output}'
+        print(Total)      
 
 
 if __name__ == "__main__":
     MainApp().run()
-    
-

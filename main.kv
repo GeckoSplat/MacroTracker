@@ -17,10 +17,10 @@
         Label:
             id: title
             size: 1.5,0.5
-            font_size: 25
+            font_size: 28
             markup: True
             bold : True     
-            pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.90}
             text: 'MacroTracker'
             background_color:(0,0,1,1)
             canvas.before:
@@ -35,7 +35,7 @@
             id: input1
             input_filter: 'float'
             hint_text:'Enter Protein'
-            pos_hint: {'center_x': 0.28, 'center_y': 0.205}
+            pos_hint: {'center_x': 0.24, 'center_y': 0.205}
             size_hint: 0.30, 0.1
             on_text: app.process()
 
@@ -43,7 +43,7 @@
             id: input2    
             input_filter: 'float'
             hint_text:'Enter Carbs'
-            pos_hint: {'center_x': 0.28, 'center_y': 0.405}
+            pos_hint: {'center_x': 0.24, 'center_y': 0.405}
             size_hint: 0.30, 0.1
             on_text: app.process()
 
@@ -51,7 +51,7 @@
             id: input3
             input_filter: 'float'    
             hint_text:'Enter Fats'
-            pos_hint: {'center_x': 0.28, 'center_y': 0.605}
+            pos_hint: {'center_x': 0.24, 'center_y': 0.605}
             size_hint: 0.30, 0.1
             on_text: app.process()
 
@@ -59,7 +59,7 @@
             id: input4
             input_filter: 'float'    
             hint_text:'Enter Kcals'
-            pos_hint: {'center_x': 0.28, 'center_y': 0.800}
+            pos_hint: {'center_x': 0.24, 'center_y': 0.800}
             size_hint: 0.30, 0.1
             on_text: app.process()
 
@@ -83,7 +83,7 @@
                 text:"SUB"
                 markup: True
                 bold : True
-                background_color: 1, 10, 100, 0.3          
+                background_color: 1, 9, 100, 0.4          
                 size_hint: 0.25, 0.1
                 pos_hint: {"x":0.365, "top":0.15}
                 on_release : app.remove_last_data(), app.clear_text_boxes()                
@@ -95,7 +95,7 @@
                 bold : True                
                 background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.80, "top":0.85}
+                pos_hint: {"x":0.79, "top":0.85}
                 on_release : app.totalsbuttonKcal(), app.clear_text_boxes()              
 
             Button:
@@ -115,7 +115,7 @@
                 bold : True                
                 background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.80, "top":0.45}
+                pos_hint: {"x":0.79, "top":0.45}
                 on_release : app.TOTcbButton(), app.clear_text_boxes()                 
 
             Button:
@@ -125,7 +125,7 @@
                 bold : True                
                 background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.80, "top":0.65}
+                pos_hint: {"x":0.79, "top":0.65}
                 on_release : app.TOTfButton(), app.clear_text_boxes()                  
 
             Button:
@@ -135,7 +135,7 @@
                 bold : True                
                 background_color: 00, 10, 40, 0.5
                 size_hint: 0.1, 0.1
-                pos_hint: {"x":0.80, "top":0.25}
+                pos_hint: {"x":0.79, "top":0.25}
                 on_release :app.TOTpButton(), app.clear_text_boxes()                   
 
 
