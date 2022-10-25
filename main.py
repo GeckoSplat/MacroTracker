@@ -86,7 +86,7 @@ class MainApp(App):
         self.root.ids.input3.text = ''
         self.root.ids.input4.text = ''         
 
-    def totalsbuttonKcal(self):
+    def totalsbuttonKcal(self): # TotalButton for loops, only 1 button for 4 total displays
         con = sql.connect('macrosdb')
         cur = con.cursor()   
         cur.execute('SELECT SUM (Kcals) FROM Kcal;')
@@ -95,30 +95,18 @@ class MainApp(App):
             output = f"{number[0]} {'Kcals'}"
             self.root.ids.outputKcals.text = f'{output}'
         print(Total)
-
-    def TOTcbButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Carbs) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                    
             output = f"{number[0]} {'Carbs'}"
             self.root.ids.TOTcbButton.text = f'{output}'
         print(Total)
-    
-    def TOTfButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Fats) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                    
             output = f"{number[0]} {'Fats'}"
             self.root.ids.TOTfButton.text = f'{output}'
         print(Total)
-
-    def TOTpButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Proteins) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                   
