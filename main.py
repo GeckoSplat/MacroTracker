@@ -28,6 +28,8 @@ class MainApp(App):
     
     def build(self):
 
+        self.icon = 'PNGs/FoodIcon-32.png'
+
         def database(self): # commented out lines as only needed to first create DB
             con = sql.connect('macrosdb')
             cur = con.cursor()
