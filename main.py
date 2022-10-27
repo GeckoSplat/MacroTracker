@@ -92,25 +92,25 @@ class MainApp(App):
         cur.execute('SELECT SUM (Kcals) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                    
-            output = f"{number[0]} {'Kcals'}"
+            output = f"{round(number[0],1)} {'Kcals'}"
             self.root.ids.outputKcals.text = f'{output}'
         print(Total)
         cur.execute('SELECT SUM (Carbs) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                    
-            output = f"{number[0]} {'Carbs'}"
+            output = f"{round(number[0],1)} {'Carbs'}"
             self.root.ids.TOTcbButton.text = f'{output}'
         print(Total)
         cur.execute('SELECT SUM (Fats) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                    
-            output = f"{number[0]} {'Fats'}"
+            output = f"{round(number[0],1)} {'Fats'}"
             self.root.ids.TOTfButton.text = f'{output}'
         print(Total)
         cur.execute('SELECT SUM (Proteins) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                   
-            output = f"{number[0]} {'Protein'}"
+            output = f"{round(number[0],1)} {'Protein'}"
             self.root.ids.TOTpButton.text = f'{output}'
         print(Total)      
 
