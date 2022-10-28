@@ -86,43 +86,45 @@ class MainApp(App):
         self.root.ids.input3.text = ''
         self.root.ids.input4.text = ''         
 
-    def totalsbuttonKcal(self):
+    def totalsbuttonKcal(self): # TotalButton for loops, only 1 button for 4 total displays
         con = sql.connect('macrosdb')
         cur = con.cursor()   
         cur.execute('SELECT SUM (Kcals) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    
-            output = f"{number[0]} {'Kcals'}"
+        global output
+        output = 'NONE'
+        for number in Total: 
+            try:                   
+                output = f"{round(number[0],1)} {'Kcals'}"
+                self.root.ids.outputKcals.text = f'{output}'
+            except: TypeError
             self.root.ids.outputKcals.text = f'{output}'
         print(Total)
-
-    def TOTcbButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Carbs) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    
-            output = f"{number[0]} {'Carbs'}"
+        for number in Total:
+            try:                    
+                output = f"{round(number[0],1)} {'Carbs'}"
+                self.root.ids.TOTcbButton.text = f'{output}'
+            except: TypeError
             self.root.ids.TOTcbButton.text = f'{output}'
         print(Total)
-    
-    def TOTfButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Fats) FROM Kcal;')
         Total = cur.fetchall()
-        for number in Total:                    
-            output = f"{number[0]} {'Fats'}"
-            self.root.ids.TOTfButton.text = f'{output}'
+        for number in Total:
+            try:                  
+                output = f"{round(number[0],1)} {'Fats'}"
+                self.root.ids.TOTfButton.text = f'{output}'
+            except: TypeError
+            self.root.ids.TOTfButton.text = f'{output}'    
         print(Total)
-
-    def TOTpButton(self):
-        con = sql.connect('macrosdb')
-        cur = con.cursor()   
         cur.execute('SELECT SUM (Proteins) FROM Kcal;')
         Total = cur.fetchall()
         for number in Total:                   
-            output = f"{number[0]} {'Protein'}"
+            try:
+                output = f"{round(number[0],1)} {'Protein'}"
+                self.root.ids.TOTpButton.text = f'{output}'
+            except:TypeError
             self.root.ids.TOTpButton.text = f'{output}'
         print(Total)      
 
