@@ -42,14 +42,14 @@ class MainApp(App):
         database(self)       
         return textinp()
 
-    def process(self):  # Defined global variable
+    def process(self):  
         global text1,text2,text3,text4    
         text1 = self.root.ids.input1.text
         text2 = self.root.ids.input2.text 
         text3 = self.root.ids.input3.text
         text4 = self.root.ids.input4.text
 
-    def add_data(self): # Defined text variables again here as kept erroring without this , unsure why.
+    def add_data(self): 
         text1 = self.root.ids.input1.text
         text2 = self.root.ids.input2.text 
         text3 = self.root.ids.input3.text
