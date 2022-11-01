@@ -80,7 +80,7 @@ class MainApp(App):
         con.close()
         print(' ALL DATA DELETED')
 
-    def clear_text_boxes(self):
+    def clear_text_boxes(self):# Clears text inputs after button pressed
         self.root.ids.input1.text = ''
         self.root.ids.input2.text = ''
         self.root.ids.input3.text = ''
