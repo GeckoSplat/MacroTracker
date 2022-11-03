@@ -11,3 +11,5 @@ This app has input boxes for Kcals, Fats, Carbohydrates and Proteins.
 This needs to be compiled to .APK with Buildozer to run on an android device. Details here : [Buildozer](https://buildozer.readthedocs.io/en/latest/installation.html)
 
 Feel free to clone, fork etc.
+
+![MacroTracker800](https://user-images.githubusercontent.com/111183176/199847477-eb968a02-4d00-4b85-8d4d-55ee8d39e11e.png)
