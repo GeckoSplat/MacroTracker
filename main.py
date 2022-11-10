@@ -15,41 +15,20 @@ import sqlite3 as sql
  #Create the widget class
 class textinp(Widget):
     TextInput.multiline = False
-    
     pass 
 
 # Create button Class
 class buttons(ButtonBehavior):
-
     pass    
   
 class MainApp(App):
     
     
     def build(self):
-
         self.icon = 'PNGs/FoodIcon-32.png'
-
-        def database(self): # commented out lines as only needed to first create DB
-            con = sql.connect('macrosdb')
-            cur = con.cursor()
-           # cur.execute(""" CREATE TABLE Kcal(                       
-           # Kcals , Fats , Carbs , Proteins )    
-           # """)        
-            con.commit()
-            con.close()
-            print(' DB DONE' )
-        database(self)       
         return textinp()
-
-    def process(self):  
-        global text1,text2,text3,text4    
-        text1 = self.root.ids.input1.text
-        text2 = self.root.ids.input2.text 
-        text3 = self.root.ids.input3.text
-        text4 = self.root.ids.input4.text
-
-    def add_data(self): 
+        
+    def add_data(self):# Adds data input from textbox's to database 
         text1 = self.root.ids.input1.text
         text2 = self.root.ids.input2.text 
         text3 = self.root.ids.input3.text
@@ -72,7 +51,7 @@ class MainApp(App):
         con.close()
         print(' DB ROW DELETED')
 
-    def clear_data(self):
+    def clear_data(self):# Clears data from database to start new day of tracking
         con = sql.connect('macrosdb')
         cur = con.cursor()   
         cur.execute("""DELETE FROM Kcal;""")
