@@ -5,12 +5,14 @@ kivy.require("2.1.0")
 from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import ButtonBehavior
+from kivy.core.window import Window
 import sqlite3 as sql
 
 
 # Create the widget class
 class textinp(Widget):
     TextInput.multiline = False
+    Window.clearcolor = (0, 0, 0.2, 1) # Main screen background colour.
     pass
 
 
